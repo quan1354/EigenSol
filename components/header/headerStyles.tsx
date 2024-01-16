@@ -25,3 +25,10 @@ export const HeaderActionsStyle = styled.div`
   flex-shrink: 1;
   overflow: hidden;
 `;
+
+export const WithdrawButtonStyle = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+`;

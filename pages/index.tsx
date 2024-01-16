@@ -1,6 +1,5 @@
 import { FC, FormEventHandler, useEffect } from 'react';
 import { GetStaticProps } from 'next';
-import styled from 'styled-components';
 import Head from 'next/head';
 import {
   useContractSWR,
@@ -12,8 +11,6 @@ import {
   Link,
   DataTable,
   DataTableRow,
-  Input,
-  Steth,
   Button,
 } from '@lidofinance/lido-ui';
 import { trackEvent, MatomoEventType } from '@lidofinance/analytics-matomo';
@@ -28,10 +25,6 @@ import { FAQItem, getFaqList } from 'utils/faqList';
 interface HomeProps {
   faqList: FAQItem[];
 }
-
-const InputWrapper = styled.div`
-  margin-bottom: ${({ theme }) => theme.spaceMap.md}px;
-`;
 
 const Home: FC<HomeProps> = ({ faqList }) => {
   useEffect(() => {
@@ -57,31 +50,51 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     method: 'name',
   });
 
+  // UI -> migrate to new file -> Navigation
   const { data } = useLidoSWR<number>('/api/oneinch-rate', standardFetcher);
   const oneInchRate = data ? (100 - (1 / data) * 100).toFixed(2) : 1;
 
   return (
-    <Layout
-      title="Lido Frontend Template"
-      subtitle="Develop Lido Apps without hassle"
-    >
+    <Layout title="Withdrawals" subtitle="Withdraw unstaked SOL">
       <Head>
         <title>Lido | Frontend Template</title>
       </Head>
       <Wallet />
       <Block>
         <form action="" method="post" onSubmit={handleSubmit}>
-          <InputWrapper>
+          {/* <InputWrapper>
             <Input
               fullwidth
               placeholder="0"
               leftDecorator={<Steth />}
               label="Token amount"
             />
-          </InputWrapper>
+          </InputWrapper> */}
+
+          <p
+            style={{
+              fontSize: '16px',
+              textAlign: 'center',
+              marginTop: '96px',
+              marginBottom: '96px',
+            }}
+          >
+            Connect wallet to see your stake accounts
+          </p>
+
           <Button fullwidth type="submit">
-            Submit
+            Connect wallet
           </Button>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              marginTop: '24px',
+            }}
+          >
+            <div>Transaction cost</div>
+            <div>~ 0.000005 SOL ($0.00048)</div>
+          </div>
         </form>
       </Block>
       <Section title="Data table" headerDecorator={<Link href="#">Link</Link>}>
