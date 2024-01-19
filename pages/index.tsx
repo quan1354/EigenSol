@@ -1,4 +1,4 @@
-import { FC, FormEventHandler, useEffect } from 'react';
+import { FC, FormEventHandler, useEffect, useState } from 'react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import {
@@ -60,12 +60,6 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       <Head>
         <title>Lido | Frontend Template</title>
       </Head>
-      {/* <>
-        <WalletMultiButton />
-        <WalletDisconnectButton />
-      </> */}
-      <SolanaWallet></SolanaWallet>
-      {/* <Wallet /> */}
       <Block>
         <form action="" method="post" onSubmit={handleSubmit}>
           {/* <InputWrapper>
@@ -88,9 +82,12 @@ const Home: FC<HomeProps> = ({ faqList }) => {
             Connect wallet to see your stake accounts
           </p>
 
-          <Button fullwidth type="submit">
-            Connect wallet
+          <SolanaWallet></SolanaWallet>
+
+          <Button style={{ marginTop: '8px' }} fullwidth type="submit">
+            Withdraw
           </Button>
+
           <div
             style={{
               display: 'flex',

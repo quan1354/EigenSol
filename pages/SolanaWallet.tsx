@@ -6,7 +6,17 @@ import {
   WalletProvider,
 } from '@solana/wallet-adapter-react';
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
-import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets';
+import { PhantomWalletAdapter,
+  SkyWalletAdapter, 
+  AlphaWalletAdapter, 
+  AvanaWalletAdapter, 
+  BitgetWalletAdapter, 
+  BitpieWalletAdapter, 
+  MathWalletAdapter, 
+  NekoWalletAdapter, 
+  CoinhubWalletAdapter, 
+  KeystoneWalletAdapter,
+} from '@solana/wallet-adapter-wallets';
 import {
   WalletModalProvider,
   WalletDisconnectButton,
@@ -25,7 +35,18 @@ export const SolanaWallet: FC = () => {
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 
   const wallets = useMemo(
-    () => [new PhantomWalletAdapter()],
+    () => [
+      new PhantomWalletAdapter(),
+      new SkyWalletAdapter(),
+      new AlphaWalletAdapter(),
+      new AvanaWalletAdapter(),
+      new BitgetWalletAdapter(),
+      new BitpieWalletAdapter(),
+      new MathWalletAdapter(),
+      new NekoWalletAdapter(),
+      new CoinhubWalletAdapter(),
+      new KeystoneWalletAdapter(),
+    ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [network],
   );
@@ -34,8 +55,8 @@ export const SolanaWallet: FC = () => {
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
-          <WalletMultiButton />
-          <WalletDisconnectButton />
+          <WalletMultiButton style={{width: '100%', display: 'flex', justifyContent: 'center'}} />
+          {/* <WalletDisconnectButton /> */}
         </WalletModalProvider>
       </WalletProvider>
 

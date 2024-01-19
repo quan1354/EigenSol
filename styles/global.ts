@@ -30,6 +30,9 @@ const GlobalStyle = createGlobalStyle`
       color: ${({ theme }) => theme.colors.primaryVisited};
     }
   }
+  .wallet-adapter-dropdown {
+    width: 100%;
+  }
 `;
 
 export default GlobalStyle;
