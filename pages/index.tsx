@@ -15,12 +15,13 @@ import {
 } from '@lidofinance/lido-ui';
 import { trackEvent, MatomoEventType } from '@lidofinance/analytics-matomo';
 
-import Wallet from 'components/wallet';
+// import Wallet from 'components/wallet';
 import Section from 'components/section';
 import Layout from 'components/layout';
 import Faq from 'components/faq';
 import { standardFetcher } from 'utils';
 import { FAQItem, getFaqList } from 'utils/faqList';
+import { SolanaWallet } from './SolanaWallet';
 
 interface HomeProps {
   faqList: FAQItem[];
@@ -59,7 +60,12 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       <Head>
         <title>Lido | Frontend Template</title>
       </Head>
-      <Wallet />
+      {/* <>
+        <WalletMultiButton />
+        <WalletDisconnectButton />
+      </> */}
+      <SolanaWallet></SolanaWallet>
+      {/* <Wallet /> */}
       <Block>
         <form action="" method="post" onSubmit={handleSubmit}>
           {/* <InputWrapper>
