@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Link, LidoLogo } from '@lidofinance/lido-ui';
+// import { Link, LidoLogo, Text } from '@lidofinance/lido-ui';
 import {
   FooterStyle,
   FooterDividerStyle,
@@ -12,12 +12,32 @@ import {
 const Footer: FC = () => (
   <FooterStyle size="full" forwardedAs="footer">
     <FooterDividerStyle />
-
     <FooterLogoStyle>
-      <LidoLogo />
+      <img
+        src="./eigensol_logo.png"
+        alt="Eigensol"
+        // style={{
+        //   marginTop: '7px',
+        // }}
+      />
+      {/* <LidoLogo /> */}
     </FooterLogoStyle>
 
     <FooterGroupStyle>
+      <FooterTitleStyle>
+        Built to participate in Encode x Solana Hackathon 2024
+      </FooterTitleStyle>
+      <FooterItemStyle>
+        Frontend - lido-frontend-template
+        {/* <Link href="https://github.com/lidofinance/lido-frontend-template">lido-frontend-template</Link> */}
+      </FooterItemStyle>
+      <FooterItemStyle>
+        Smart Contract - Codigo
+        {/*<Link href="https://docs.codigo.ai/">codigo</Link> */}
+      </FooterItemStyle>
+    </FooterGroupStyle>
+
+    {/* <FooterGroupStyle>
       <FooterTitleStyle>Resources</FooterTitleStyle>
       <FooterItemStyle>
         <Link href="https://stake.lido.fi/">Stake with Lido</Link>
@@ -71,7 +91,7 @@ const Footer: FC = () => (
       <FooterItemStyle>
         <Link href="http://help.lido.fi/">Help Center</Link>
       </FooterItemStyle>
-    </FooterGroupStyle>
+    </FooterGroupStyle>*/}
   </FooterStyle>
 );
 

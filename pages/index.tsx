@@ -1,4 +1,4 @@
-import { FC, FormEventHandler, useEffect, useState } from 'react';
+import { FC, FormEventHandler, useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import {
@@ -58,7 +58,8 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   return (
     <Layout title="Withdrawals" subtitle="Withdraw unstaked SOL">
       <Head>
-        <title>Lido | Frontend Template</title>
+        {/* <title>Lido | Frontend Template</title> */}
+        <title>EigenSol</title>
       </Head>
       <Block>
         <form action="" method="post" onSubmit={handleSubmit}>
@@ -99,6 +100,59 @@ const Home: FC<HomeProps> = ({ faqList }) => {
             <div>~ 0.000005 SOL ($0.00048)</div>
           </div>
         </form>
+      </Block>
+      <div>
+        <h1>Staking part</h1>
+      </div>
+      <Block>
+        <form action="" method="post" onSubmit={handleSubmit}>
+          {/* <InputWrapper>
+            <Input
+              fullwidth
+              placeholder="0"
+              leftDecorator={<Steth />}
+              label="Token amount"
+            />
+          </InputWrapper> */}
+
+          <p
+            style={{
+              fontSize: '16px',
+              textAlign: 'center',
+              marginTop: '96px',
+              marginBottom: '96px',
+            }}
+          >
+            Connect wallet to see your stake accounts
+          </p>
+
+          <SolanaWallet></SolanaWallet>
+
+          <Button style={{ marginTop: '8px' }} fullwidth type="submit">
+            Withdraw
+          </Button>
+
+          {/* <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              marginTop: '24px',
+            }}
+          >
+            <div>Transaction cost</div>
+            <div>~ 0.000005 SOL ($0.00048)</div>
+            <div>Transaction cost</div>
+            <div>~ 0.000005 SOL ($0.00048)</div>
+          </div> */}
+        </form>
+        <DataTable>
+          {/* <DataTableRow title="Bridge Fees">0</DataTableRow>
+          <DataTableRow title="Relayer gas fees">0.012312 stSol</DataTableRow>
+          <DataTableRow title="Estimated wait time">
+            0.012312 stSol
+          </DataTableRow> */}
+          <DataTableRow title="Transaction gas cost">$0.12</DataTableRow>
+        </DataTable>
       </Block>
       <Section title="Data table" headerDecorator={<Link href="#">Link</Link>}>
         <Block>

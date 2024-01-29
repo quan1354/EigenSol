@@ -69,29 +69,29 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="manifest" href="/manifest.json" />
           <link rel="icon" href="/favicon.ico" sizes="any" />
-          <link rel="icon" type="image/svg+xml" href="favicon-512x512.svg" />
+          {/* <link rel="icon" type="image/svg+xml" href="favicon-512x512.svg" /> */}
           <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href="/apple-touch-icon.png"
+            href="/eigensol_favicon.png"
           />
           <link
             rel="icon"
             type="image/png"
             sizes="194x194"
-            href="/favicon-194x194.png"
+            href="/eigensol_favicon.png"
           />
           <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="/favicon-32x32.png"
+            href="/eigensol_favicon.png"
           />
           <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href="/favicon-16x16.png"
+            href="/eigensol_favicon.png"
           />
           <meta property="og:type" content="website" />
           <meta property="og:title" content={this.metaTitle} />
