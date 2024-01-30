@@ -40,9 +40,17 @@ import {
 } from '@lido-sdk/react';
 import { standardFetcher } from 'utils';
 
+// import idl from './idl.json';
+// import { useAnchorWallet, useConnection } from '@solana/wallet-adapter-react';
+// import {
+//   AnchorProvider,
+//   setProvider,
+//   Program,
+//   Idl,
+// } from '@project-serum/anchor';
+
 interface WalletContextState {
   setTransactionUrl: any;
-  // Wallet Context State
   autoConnect: boolean;
   wallets: Wallet[];
   wallet: Wallet | null;
@@ -66,6 +74,21 @@ interface WalletContextState {
 }
 
 const withdraw: FC<WalletContextState> = () => {
+  // Anchor Set up
+  // const [program, setProgram] = useState('');
+  // const { connection } = useConnection();
+  // const wallet = useAnchorWallet();
+
+  // if (wallet) {
+  //   const provider = new AnchorProvider(connection, wallet, {});
+  //   setProvider(provider);
+  // }
+
+  // const programId = new PublicKey(
+  //   'CdKFiRMHeUX6P74CfXRwnidMPqDgtbbCsN59iH8Kudwq',
+  // );
+  // const program = new Program(idl as Idl, programId);
+
   useEffect(() => {
     const matomoSomeEvent: MatomoEventType = [
       'Lido_Frontend_Template',
@@ -74,6 +97,18 @@ const withdraw: FC<WalletContextState> = () => {
     ];
 
     trackEvent(...matomoSomeEvent);
+
+    // let provider: anchor.Provider;
+
+    // try {
+    //   provider = anchor.getProvider();
+    // } catch {
+    //   provider = new anchor.AnchorProvider(connection, wallet, {});
+    //   anchor.setProvider(provider);
+    // }
+
+    // const program = new anchor.Program(idl as anchor.Idl, PROGRAM_ID);
+    // setProgram(program);
   }, []);
 
   const contractRpc = useSTETHContractRPC();
@@ -85,6 +120,21 @@ const withdraw: FC<WalletContextState> = () => {
   // UI -> migrate to new file -> Navigation
   const { data } = useLidoSWR<number>('/api/oneinch-rate', standardFetcher);
   const oneInchRate = data ? (100 - (1 / data) * 100).toFixed(2) : 1;
+
+  const withdrawToken = async () => {
+    // const transactionSignature = await program.methods
+    //   .instructionName()
+    //   .accounts({})
+    //   .signers([])
+    //   .rpc();
+    // const confirmation = await connection.confirmTransaction(
+    //   transactionSignature,
+    //   'confirmed',
+    // );
+    // console.log('Transaction confirmed:', confirmation);
+    // const accounts = await program.account.counter.all();
+    // console.log(accounts);
+  };
 
   return (
     <Layout title="Withdrawals" subtitle="Withdraw unstaked SOL">
@@ -115,7 +165,12 @@ const withdraw: FC<WalletContextState> = () => {
 
           <SolanaWallet></SolanaWallet>
 
-          <Button style={{ marginTop: '8px' }} fullwidth type="submit">
+          <Button
+            style={{ marginTop: '8px' }}
+            onClick={withdrawToken}
+            fullwidth
+            type="submit"
+          >
             Withdraw
           </Button>
 

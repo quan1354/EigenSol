@@ -24,7 +24,7 @@ const HeaderMenu: FC = () => (
           </svg>
         </div>
 
-        <div>Withdraw</div>
+        <div>Stake</div>
       </WithdrawButtonStyle>
     </Button>
     <Link href="/withdraw" passHref>
