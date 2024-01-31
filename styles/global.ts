@@ -10,8 +10,9 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
   body {
-    background: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.text};
+    /* background: ${({ theme }) => theme.colors.background}; */
+    /* color: ${({ theme }) => theme.colors.text}; */
+    color: #000000;
     position: relative;
     box-sizing: border-box;
     font-size: ${({ theme }) => theme.fontSizesMap.xs}px;
@@ -29,6 +30,9 @@ const GlobalStyle = createGlobalStyle`
     &:visited {
       color: ${({ theme }) => theme.colors.primaryVisited};
     }
+  }
+  .wallet-adapter-dropdown {
+    width: 100%;
   }
 `;
 

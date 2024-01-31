@@ -15,12 +15,13 @@ import {
 } from '@lidofinance/lido-ui';
 import { trackEvent, MatomoEventType } from '@lidofinance/analytics-matomo';
 
-import Wallet from 'components/wallet';
+// import Wallet from 'components/wallet';
 import Section from 'components/section';
 import Layout from 'components/layout';
 import Faq from 'components/faq';
 import { standardFetcher } from 'utils';
 import { FAQItem, getFaqList } from 'utils/faqList';
+import { SolanaWallet } from './SolanaWallet';
 
 interface HomeProps {
   faqList: FAQItem[];
@@ -57,9 +58,9 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   return (
     <Layout title="Withdrawals" subtitle="Withdraw unstaked SOL">
       <Head>
-        <title>Lido | Frontend Template</title>
+        {/* <title>Lido | Frontend Template</title> */}
+        <title>EigenSol</title>
       </Head>
-      <Wallet />
       <Block>
         <form action="" method="post" onSubmit={handleSubmit}>
           {/* <InputWrapper>
@@ -82,9 +83,12 @@ const Home: FC<HomeProps> = ({ faqList }) => {
             Connect wallet to see your stake accounts
           </p>
 
-          <Button fullwidth type="submit">
-            Connect wallet
+          <SolanaWallet></SolanaWallet>
+
+          <Button style={{ marginTop: '8px' }} fullwidth type="submit">
+            Withdraw
           </Button>
+
           <div
             style={{
               display: 'flex',
@@ -96,6 +100,59 @@ const Home: FC<HomeProps> = ({ faqList }) => {
             <div>~ 0.000005 SOL ($0.00048)</div>
           </div>
         </form>
+      </Block>
+      <div>
+        <h1>Staking part</h1>
+      </div>
+      <Block>
+        <form action="" method="post" onSubmit={handleSubmit}>
+          {/* <InputWrapper>
+            <Input
+              fullwidth
+              placeholder="0"
+              leftDecorator={<Steth />}
+              label="Token amount"
+            />
+          </InputWrapper> */}
+
+          <p
+            style={{
+              fontSize: '16px',
+              textAlign: 'center',
+              marginTop: '96px',
+              marginBottom: '96px',
+            }}
+          >
+            Connect wallet to see your stake accounts
+          </p>
+
+          <SolanaWallet></SolanaWallet>
+
+          <Button style={{ marginTop: '8px' }} fullwidth type="submit">
+            Withdraw
+          </Button>
+
+          {/* <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              marginTop: '24px',
+            }}
+          >
+            <div>Transaction cost</div>
+            <div>~ 0.000005 SOL ($0.00048)</div>
+            <div>Transaction cost</div>
+            <div>~ 0.000005 SOL ($0.00048)</div>
+          </div> */}
+        </form>
+        <DataTable>
+          {/* <DataTableRow title="Bridge Fees">0</DataTableRow>
+          <DataTableRow title="Relayer gas fees">0.012312 stSol</DataTableRow>
+          <DataTableRow title="Estimated wait time">
+            0.012312 stSol
+          </DataTableRow> */}
+          <DataTableRow title="Transaction gas cost">$0.12</DataTableRow>
+        </DataTable>
       </Block>
       <Section title="Data table" headerDecorator={<Link href="#">Link</Link>}>
         <Block>

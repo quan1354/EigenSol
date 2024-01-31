@@ -7,7 +7,7 @@ export const FooterStyle = styled(Container)`
   flex-wrap: wrap;
   padding-top: 60px;
   padding-bottom: 20px;
-
+  color: #000000;
   ${({ theme }) => theme.mediaQueries.lg} {
     padding-top: 40px;
   }
@@ -16,7 +16,6 @@ export const FooterStyle = styled(Container)`
 export const FooterDividerStyle = styled(Divider)`
   flex-basis: 100%;
   margin-bottom: 60px;
-
   ${({ theme }) => theme.mediaQueries.md} {
     margin-bottom: 40px;
   }
@@ -51,6 +50,7 @@ export const FooterGroupStyle = styled.div`
 export const FooterTitleStyle = styled.h4`
   margin: 0.6em 0;
   font-weight: 800;
+
   font-size: ${({ theme }) => theme.fontSizesMap.sm}px;
   line-height: 1.4em;
   margin: 0 0 1em;
