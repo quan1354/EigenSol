@@ -92,12 +92,6 @@ methods:
       - name: amount
         type: u32
         description: The amount to be added to the balance of token pool as staking amount.
-      - name: mint
-        uses:
-        - csl_spl_assoc_token.create
-        - csl_spl_token.transfer_checked
-        type: u32
-        description: The amount to be added to the balance of token pool as staking amount.
   - name: withdraw
     summary: Register the given amount as a withdrawal amount for the given token pool. The total shares of the token pool will be decreased.
     inputs:
@@ -108,7 +102,7 @@ methods:
       - name: amount
         type: u32
         description: The shares to be deducted from the balance of token pool as withdrawal amount.
-  - name: add_AVS
+  - name: addavs
     summary: Add Authorized Validator Stake. Add stake from an authorized validator to the token pool.
     inputs:
       - name: token_pool
@@ -121,7 +115,7 @@ methods:
       - name: authority
         type: sol:account_info
         description: The permission checking of contract, can only be called by program owner.
-  - name: remove_AVS
+  - name: removeavs
     summary: Remove Authorized Validator Stake. Remove stake from an authorized validator in the token pool.
     inputs:
       - name: token_pool

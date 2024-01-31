@@ -6,8 +6,6 @@ pub use stubs::*;
 pub mod state;
 pub use state::*;
 
-
-
 declare_id!("GiYyM5jXdeaaJY8ixTrhKJGoP3UfwMrAeYduRSmW7VnG");
 
 #[program]
@@ -58,8 +56,8 @@ pub mod eigensol {
 	pub token_pool: Account<'info,PoolInfo>,}
 
 
-    pub fn add_AVS(ctx: Context<AddAVS>,validator_account:Pubkey) -> Result<()> {
-        stubs::add_AVS::add_AVS(ctx,validator_account)}
+    pub fn addavs(ctx: Context<AddAVS>,validator_account:Pubkey) -> Result<()> {
+        stubs::addavs::addavs(ctx,validator_account)}
 
     #[derive(Accounts)]
     #[instruction(validator_account:Pubkey)]
@@ -73,8 +71,8 @@ pub mod eigensol {
 	pub authority : AccountInfo<'info>,}
 
     
-    pub fn remove_AVS(ctx: Context<RemoveAVS>,validator_account:Pubkey) -> Result<()> {
-        stubs::remove_AVS::remove_AVS(ctx,validator_account)}
+    pub fn removeavs(ctx: Context<RemoveAVS>,validator_account:Pubkey) -> Result<()> {
+        stubs::removeavs::removeavs(ctx,validator_account)}
         
     #[derive(Accounts)]
     #[instruction(validator_account:Pubkey)]
