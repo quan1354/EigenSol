@@ -13,7 +13,13 @@ const Footer: FC = () => (
   <FooterStyle size="full" forwardedAs="footer">
     <FooterDividerStyle />
     <FooterLogoStyle>
-      <img src="./eigensol_logo.png" alt="Eigensol" />
+      <img
+        src="./eigensol_logo.png"
+        alt="Eigensol"
+        // style={{
+        //   marginTop: '7px',
+        // }}
+      />
       {/* <LidoLogo /> */}
     </FooterLogoStyle>
 
