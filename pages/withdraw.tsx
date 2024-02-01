@@ -14,6 +14,9 @@ import {
   PublicKey,
   Transaction,
   TransactionSignature,
+  Keypair,
+  LAMPORTS_PER_SOL,
+  clusterApiUrl,
 } from '@solana/web3.js';
 import {
   MessageSignerWalletAdapterProps,
@@ -121,7 +124,42 @@ const withdraw: FC<WalletContextState> = () => {
   const { data } = useLidoSWR<number>('/api/oneinch-rate', standardFetcher);
   const oneInchRate = data ? (100 - (1 / data) * 100).toFixed(2) : 1;
 
+  // Get Credential from wallet
+  const wallet = new Keypair();
+  const publicKey = new PublicKey(wallet.publicKey);
+  const secretKey = wallet.secretKey;
+
+  const getWalletBalance = async () => {
+    try {
+      const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+      const walletBalance = await connection.getBalance(publicKey);
+      console.log(`Wallet balance is ${walletBalance}`);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const airDropSol = async () => {
+    try {
+      const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+      const fromAirDropSignature = await connection.requestAirdrop(
+        publicKey,
+        2 * LAMPORTS_PER_SOL,
+      );
+      const latestBlockHash = await connection.getLatestBlockhash();
+      await connection.confirmTransaction({
+        blockhash: latestBlockHash.blockhash,
+        lastValidBlockHeight: latestBlockHash.lastValidBlockHeight,
+        signature: fromAirDropSignature,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const withdrawToken = async () => {
+    console.log(publicKey);
+    console.log(secretKey);
     // const transactionSignature = await program.methods
     //   .instructionName()
     //   .accounts({})
@@ -134,6 +172,10 @@ const withdraw: FC<WalletContextState> = () => {
     // console.log('Transaction confirmed:', confirmation);
     // const accounts = await program.account.counter.all();
     // console.log(accounts);
+
+    await getWalletBalance();
+    await airDropSol();
+    await getWalletBalance();
   };
 
   return (
