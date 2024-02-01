@@ -2,21 +2,21 @@ import { memo } from 'react';
 import NextApp, { AppContext, AppProps } from 'next/app';
 import {
   ToastContainer,
-  CookiesTooltip,
-  migrationAllowCookieToCrossDomainCookieClientSide,
-  migrationThemeCookiesToCrossDomainCookiesClientSide,
+  // CookiesTooltip,
+  // migrationAllowCookieToCrossDomainCookieClientSide,
+  // migrationThemeCookiesToCrossDomainCookiesClientSide,
 } from '@lidofinance/lido-ui';
 import Providers from 'providers';
 import { CustomAppProps } from 'types';
 import { withCsp } from 'utils/withCsp';
 
 // Migrations old cookies to new cross domain cookies
-migrationThemeCookiesToCrossDomainCookiesClientSide();
+// migrationThemeCookiesToCrossDomainCookiesClientSide();
 
 // Migrations old allow cookies to new cross domain cookies
-migrationAllowCookieToCrossDomainCookieClientSide(
-  'LIDO_WIDGET__COOKIES_ALLOWED',
-);
+// migrationAllowCookieToCrossDomainCookieClientSide(
+//   'LIDO_WIDGET__COOKIES_ALLOWED',
+// );
 
 const App = (props: AppProps): JSX.Element => {
   const { Component, pageProps } = props;
@@ -32,7 +32,7 @@ const AppWrapper = (props: CustomAppProps): JSX.Element => {
   return (
     <Providers>
       <MemoApp {...rest} />
-      <CookiesTooltip />
+      {/* <CookiesTooltip /> */}
       <ToastContainer />
     </Providers>
   );

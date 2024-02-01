@@ -31,4 +31,16 @@ export const WithdrawButtonStyle = styled.div`
   align-items: center;
   gap: 10px;
   flex-direction: row;
+  color: #646ecb;
+  &:hover {
+    color: #000000;
+  }
 `;
+
+// export const CustomButtonStyle = styled(Button)`
+//   color: #646ecb;
+//   background-color:transparent;
+//   :hover {
+//     background-color: yellow;
+//   }
+// `;

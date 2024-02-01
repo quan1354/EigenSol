@@ -1,13 +1,23 @@
-/* eslint-disable prettier/prettier */
-import { FC, useEffect } from 'react';
+import { FC, FormEventHandler, useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import styled from 'styled-components';
 import {
   useContractSWR,
   useSTETHContractRPC,
   useLidoSWR,
 } from '@lido-sdk/react';
-import { Block, Link, DataTable, DataTableRow } from '@lidofinance/lido-ui';
+import {
+  Block,
+  Link,
+  DataTable,
+  DataTableRow,
+  Button,
+  // Solana,
+  Stsol,
+  Text,
+  Input,
+} from '@lidofinance/lido-ui';
 import { trackEvent, MatomoEventType } from '@lidofinance/analytics-matomo';
 
 // import Wallet from 'components/wallet';
@@ -30,7 +40,9 @@ import idl from './idl.json';
 interface HomeProps {
   faqList: FAQItem[];
 }
-
+const InputWrapper = styled.div`
+  margin-bottom: ${({ theme }) => theme.spaceMap.md}px;
+`;
 const Home: FC<HomeProps> = ({ faqList }) => {
   useEffect(() => {
     const matomoSomeEvent: MatomoEventType = [
@@ -55,8 +67,47 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   return (
     <Layout title="Withdrawals" subtitle="Withdraw unstaked SOL">
       <Head>
-        <title>Index File</title>
+        {/* <title>Lido | Frontend Template</title> */}
+        <title>EigenSol</title>
       </Head>
+
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              marginTop: '24px',
+            }}
+          >
+            <div>Transaction cost</div>
+            <div>~ 0.000005 SOL ($0.00048)</div>
+          </div>
+        </form>
+      </Block>
+
+      <h3>Divider between stake and withdraw components</h3>
+
+      <Block>
+        <InputWrapper>
+          <Text size="xs">Enter amount</Text>
+        </InputWrapper>
+        <form action="" method="post" onSubmit={handleSubmit}>
+          <InputWrapper>
+            <Input fullwidth label="Amount" leftDecorator={<Stsol />} />
+          </InputWrapper>
+          <InputWrapper>
+            <Input fullwidth disabled label="Your token address" />
+          </InputWrapper>
+          <InputWrapper>
+            <Button fullwidth type="submit">
+              Start staking
+            </Button>
+          </InputWrapper>
+          <DataTable>
+            <DataTableRow title="You will receive">0 Stsol</DataTableRow>
+            <DataTableRow title="Exchange rate">0.012312 stSol</DataTableRow>
+          </DataTable>
+        </form>
+      </Block>
 
       <Section title="Data table" headerDecorator={<Link href="#">Link</Link>}>
         <Block>

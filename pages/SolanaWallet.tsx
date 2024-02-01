@@ -5,27 +5,28 @@ import {
   ConnectionProvider,
   WalletProvider,
 } from '@solana/wallet-adapter-react';
-import { PhantomWalletAdapter,
-  SkyWalletAdapter, 
-  AlphaWalletAdapter, 
-  AvanaWalletAdapter, 
-  BitgetWalletAdapter, 
-  BitpieWalletAdapter, 
-  MathWalletAdapter, 
-  NekoWalletAdapter, 
-  CoinhubWalletAdapter, 
+import {
+  PhantomWalletAdapter,
+  SkyWalletAdapter,
+  AlphaWalletAdapter,
+  AvanaWalletAdapter,
+  BitgetWalletAdapter,
+  BitpieWalletAdapter,
+  MathWalletAdapter,
+  NekoWalletAdapter,
+  CoinhubWalletAdapter,
   KeystoneWalletAdapter,
 } from '@solana/wallet-adapter-wallets';
 import {
   WalletModalProvider,
   WalletMultiButton,
 } from '@solana/wallet-adapter-react-ui';
-import * as web3 from "@solana/web3.js"
+import * as web3 from '@solana/web3.js';
 // Default styles that can be overridden by your app
 require('@solana/wallet-adapter-react-ui/styles.css');
 
 export const SolanaWallet: FC = () => {
-  const endpoint = web3.clusterApiUrl("devnet")
+  const endpoint = web3.clusterApiUrl('devnet');
 
   const wallets = useMemo(
     () => [
@@ -48,7 +49,9 @@ export const SolanaWallet: FC = () => {
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
-          <WalletMultiButton style={{width: '100%', display: 'flex', justifyContent: 'center'}} />
+          <WalletMultiButton
+            style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+          />
           {/* <WalletDisconnectButton /> */}
         </WalletModalProvider>
       </WalletProvider>

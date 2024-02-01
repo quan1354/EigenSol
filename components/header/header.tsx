@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
+
 import {
   HeaderStyle,
   HeaderLogoStyle,
@@ -13,9 +14,12 @@ const Header: FC = () => (
     <HeaderLogoStyle>
       <Link href="/">
         <img
-          src="https://www.jito.network/_next/image/?url=%2Fhomepage%2Fjito_logo_green_small.webp&w=1920&q=75"
-          alt="Jido"
-          height={25}
+          src="./eigensol_logo.png"
+          alt="Eigensol"
+          style={{
+            marginTop: '7px',
+          }}
+          height={32}
         />
       </Link>
     </HeaderLogoStyle>

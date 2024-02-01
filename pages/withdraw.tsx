@@ -1,8 +1,5 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable prettier/prettier */
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import Head from 'next/head';
 import {
   Wallet,
@@ -43,14 +40,13 @@ import {
 } from '@lido-sdk/react';
 import { standardFetcher } from 'utils';
 
-// import idl from './idl.json';
-// import { useAnchorWallet, useConnection } from '@solana/wallet-adapter-react';
-// import {
-//   AnchorProvider,
-//   setProvider,
-//   Program,
-//   Idl,
-// } from '@project-serum/anchor';
+const About: FC = () => (
+  <ServicePage title="404">
+    <Head>
+      <title>EigenSol</title>
+    </Head>
+  </ServicePage>
+);
 
 interface WalletContextState {
   setTransactionUrl: any;
