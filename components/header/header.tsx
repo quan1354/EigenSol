@@ -7,7 +7,7 @@ import {
   HeaderActionsStyle,
 } from './headerStyles';
 import HeaderWallet from './headerWallet';
-import HeaderMenu from './headerMenu';
+// import HeaderMenu from './headerMenu';
 
 const Header: FC = () => (
   <HeaderStyle size="full" forwardedAs="header">
@@ -23,7 +23,7 @@ const Header: FC = () => (
         />
       </Link>
     </HeaderLogoStyle>
-    <HeaderMenu />
+    {/* <HeaderMenu /> */}
     <HeaderActionsStyle>
       <HeaderWallet />
     </HeaderActionsStyle>

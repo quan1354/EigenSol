@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import styled from 'styled-components';
@@ -18,6 +18,8 @@ import {
   Stsol,
   Text,
   Input,
+  Stack,
+  StackItem,
 } from '@lidofinance/lido-ui';
 import { trackEvent, MatomoEventType } from '@lidofinance/analytics-matomo';
 
@@ -65,6 +67,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   const { data } = useLidoSWR<number>('/api/oneinch-rate', standardFetcher);
   const oneInchRate = data ? (100 - (1 / data) * 100).toFixed(2) : 1;
 
+  const [activeComponent, setActiveComponent] = useState('Stake');
   return (
     <Layout title="This is Index Page" subtitle="Withdraw unstaked SOL">
       <Head>
@@ -72,65 +75,102 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         <title>EigenSol</title>
       </Head>
       <Block>
-        <form action="" method="post">
-          {/* <InputWrapper>
-            <Input
-              fullwidth
-              placeholder="0"
-              leftDecorator={<Steth />}
-              label="Token amount"
-            />
-          </InputWrapper> */}
-
-          <p
-            style={{
-              fontSize: '16px',
-              textAlign: 'center',
-              marginTop: '96px',
-              marginBottom: '96px',
-            }}
-          >
-            Please navigate to other page
-          </p>
-
-          <Button style={{ marginTop: '8px' }} fullwidth type="submit">
-            Withdraw
-          </Button>
-
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              marginTop: '24px',
-            }}
-          >
-            <div>Transaction cost</div>
-            <div>~ 0.000005 SOL ($0.00048)</div>
-          </div>
-        </form>
-      </Block>
-      <h3>Divider between stake and withdraw components</h3>
-      <Block>
-        <InputWrapper>
-          <Text size="xs">Enter amount</Text>
-        </InputWrapper>
-        <form action="" method="post">
-          <InputWrapper>
-            <Input fullwidth label="Amount" leftDecorator={<Stsol />} />
-          </InputWrapper>
-          <InputWrapper>
-            <Input fullwidth disabled label="Your token address" />
-          </InputWrapper>
-          <InputWrapper>
-            <Button fullwidth type="submit">
-              Start staking
+        <Stack
+          align="flex-start"
+          direction="row"
+          justify="flex-start"
+          spacing="sm"
+          wrap="wrap"
+        >
+          <StackItem>
+            <Button
+              color="secondary"
+              size="sm"
+              variant="ghost"
+              onClick={() => setActiveComponent('Stake')}
+            >
+              Stake
             </Button>
-          </InputWrapper>
-          <DataTable>
-            <DataTableRow title="You will receive">0 Stsol</DataTableRow>
-            <DataTableRow title="Exchange rate">0.012312 stSol</DataTableRow>
-          </DataTable>
-        </form>
+          </StackItem>
+          <StackItem>
+            <Button
+              color="secondary"
+              size="sm"
+              variant="ghost"
+              onClick={() => setActiveComponent('Withdraw')}
+            >
+              Withdraw
+            </Button>
+          </StackItem>
+        </Stack>
+
+        {activeComponent === 'Stake' ? (
+          // Stake component
+          <Block>
+            <InputWrapper>
+              <Text size="xs">Enter amount</Text>
+            </InputWrapper>
+            <form action="" method="post">
+              <InputWrapper>
+                <Input fullwidth label="Amount" leftDecorator={<Stsol />} />
+              </InputWrapper>
+              <InputWrapper>
+                <Input fullwidth disabled label="Your token address" />
+              </InputWrapper>
+              <InputWrapper>
+                <Button fullwidth type="submit">
+                  Start staking
+                </Button>
+              </InputWrapper>
+              <DataTable>
+                <DataTableRow title="You will receive">0 Stsol</DataTableRow>
+                <DataTableRow title="Exchange rate">
+                  0.012312 stSol
+                </DataTableRow>
+              </DataTable>
+            </form>
+          </Block>
+        ) : (
+          // Withdraw component
+          <Block>
+            <form action="" method="post">
+              {/*  <InputWrapper>
+         <Input
+           fullwidth
+           placeholder="0"
+           leftDecorator={<Steth />}
+           label="Token amount"
+         />
+       </InputWrapper> */}
+
+              <p
+                style={{
+                  fontSize: '16px',
+                  textAlign: 'center',
+                  marginTop: '96px',
+                  marginBottom: '96px',
+                }}
+              >
+                Please navigate to other page
+              </p>
+
+              <Button style={{ marginTop: '8px' }} fullwidth type="submit">
+                Withdraw
+              </Button>
+
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  marginTop: '24px',
+                }}
+              >
+                <div>Transaction cost</div>
+                <div>~ 0.000005 SOL ($0.00048)</div>
+              </div>
+            </form>
+          </Block>
+        )}
       </Block>
       <Section title="Data table" headerDecorator={<Link href="#">Link</Link>}>
         <Block>
