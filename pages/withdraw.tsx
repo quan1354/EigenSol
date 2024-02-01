@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { FC } from 'react';
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable prettier/prettier */
+import { FC, useEffect } from 'react';
 import Head from 'next/head';
 import {
   Wallet,
@@ -40,13 +42,13 @@ import {
 } from '@lido-sdk/react';
 import { standardFetcher } from 'utils';
 
-const About: FC = () => (
-  <ServicePage title="404">
-    <Head>
-      <title>EigenSol</title>
-    </Head>
-  </ServicePage>
-);
+// const About: FC = () => (
+//   <ServicePage title="404">
+//     <Head>
+//       <title>EigenSol</title>
+//     </Head>
+//   </ServicePage>
+// );
 
 interface WalletContextState {
   setTransactionUrl: any;

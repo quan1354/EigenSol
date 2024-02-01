@@ -1,4 +1,5 @@
-import { FC, FormEventHandler, useEffect } from 'react';
+/* eslint-disable prettier/prettier */
+import { FC, useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import styled from 'styled-components';
@@ -65,11 +66,36 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   const oneInchRate = data ? (100 - (1 / data) * 100).toFixed(2) : 1;
 
   return (
-    <Layout title="Withdrawals" subtitle="Withdraw unstaked SOL">
+    <Layout title="This is Index Page" subtitle="Withdraw unstaked SOL">
       <Head>
         {/* <title>Lido | Frontend Template</title> */}
         <title>EigenSol</title>
       </Head>
+      <Block>
+        <form action="" method="post">
+          {/* <InputWrapper>
+            <Input
+              fullwidth
+              placeholder="0"
+              leftDecorator={<Steth />}
+              label="Token amount"
+            />
+          </InputWrapper> */}
+
+          <p
+            style={{
+              fontSize: '16px',
+              textAlign: 'center',
+              marginTop: '96px',
+              marginBottom: '96px',
+            }}
+          >
+            Please navigate to other page
+          </p>
+
+          <Button style={{ marginTop: '8px' }} fullwidth type="submit">
+            Withdraw
+          </Button>
 
           <div
             style={{
@@ -83,14 +109,12 @@ const Home: FC<HomeProps> = ({ faqList }) => {
           </div>
         </form>
       </Block>
-
       <h3>Divider between stake and withdraw components</h3>
-
       <Block>
         <InputWrapper>
           <Text size="xs">Enter amount</Text>
         </InputWrapper>
-        <form action="" method="post" onSubmit={handleSubmit}>
+        <form action="" method="post">
           <InputWrapper>
             <Input fullwidth label="Amount" leftDecorator={<Stsol />} />
           </InputWrapper>
@@ -108,7 +132,6 @@ const Home: FC<HomeProps> = ({ faqList }) => {
           </DataTable>
         </form>
       </Block>
-
       <Section title="Data table" headerDecorator={<Link href="#">Link</Link>}>
         <Block>
           <DataTable>
