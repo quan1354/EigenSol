@@ -2,7 +2,7 @@ use anchor_lang::prelude::*;
 #[account]
 pub struct PoolInfo {
     pub total_balance: u32,
-    pub token_type: Vec<Pubkey>,
+    pub token: Pubkey,
     pub start_slot: u64,
     pub end_slot: u64,
     pub staker_address: Vec<Pubkey>,
@@ -12,6 +12,6 @@ pub struct PoolInfo {
 
 #[account]
 pub struct UserInfo {
-    pub stake_amount: u32,
+    pub stake_amount: u64,
     pub deposit_slot: u64,
 }
