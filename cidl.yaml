@@ -1,0 +1,130 @@
+cidl: "0.8"
+info:
+  name: eigensol
+  title: Eigensol
+  version: 0.0.1
+  summary: |-
+    The purpose of this contract is to allow staking, withdrawal as well as adding and removing of AVS happened. For this contract, we are going to 
+    target the Solana blockchain. Thus, we define the data structure **PoolInfo** as well as **UserInfo** that will be transpile to a PDA Account 
+    base on the seeds defined in the solana extension. In addition, the contract defines five methods, also known as 
+    instruction.
+  contact:
+    name: Sky
+    email: skky5687@gmail.com
+    git: https://github.com/SkyYap/EigenSol
+  license:
+    name: MIT
+    url: https://opensource.org/license/mit
+types:
+  PoolInfo:
+    summary: Storing token pool balance and stakers.
+    solana:
+      owner: self
+      seeds:
+        - name: poolinfo
+    fields:
+      - name: total_balance
+        type: u32
+        description: The total balance in token pool.
+      - name: token_type
+        type: rs:vec<sol:pubkey>
+        description: Types of token accepted to token pool.
+        solana:
+          attributes: [ cap:36 ]
+      - name: start_slot
+        type: u64
+        description: The starting time for stakers stake.
+      - name: end_slot
+        type: u64
+        description: The ending time for stakers stake.
+      - name: staker_address
+        type: rs:vec<sol:pubkey>
+        description: The address of staker/owner.
+        solana:
+          attributes: [ cap:36 ]
+      - name: avs_list
+        type: rs:vec<sol:pubkey>
+        description: The list of public address of avs.
+        solana:
+          attributes: [ cap:36 ]
+      - name: admin_address
+        type: sol:pubkey
+        description: The admin address for authorized actions.
+  UserInfo:
+    summary: Storing token pool balance and stakers.
+    solana:
+      owner: self
+      seeds:
+        - name: userinfo
+        - name: signer
+          type: sol:pubkey
+    fields:
+      - name: stake_amount
+        type: u32
+        description: The total stake amount in token pool.
+      - name: deposit_slot
+        type: u64
+        description: The depost time of stakers stake.
+methods:
+  - name: initialize
+    summary: To call once per account. Initialize a PoolInfo account. The balance of the token pool will be set to 0 initially.
+    inputs:
+      - name: token_pool
+        type: PoolInfo
+        solana:
+          attributes: [ init_if_needed ]
+      - name: token_type
+        type: rs:vec<sol:pubkey>
+        description: The accepted token types to be assigned to the PoolInfo.token_type property
+      - name: start_slot
+        type: u64
+        description: The timestamp the token pool is initialized.
+      - name: end_slot
+        type: u64
+        description: The timestamp the token pool is closed.
+  - name: stake
+    summary: Register the given amount as staking amount for the given token pool. The balance of the token pool will be increased.
+    inputs:
+      - name: token_pool
+        type: PoolInfo
+        solana:
+            attributes: [ mut ]
+      - name: amount
+        type: u32
+        description: The amount to be added to the balance of token pool as staking amount.
+  - name: withdraw
+    summary: Register the given amount as a withdrawal amount for the given token pool. The total shares of the token pool will be decreased.
+    inputs:
+      - name: token_pool
+        type: PoolInfo
+        solana:
+          attributes: [ mut ]
+      - name: amount
+        type: u32
+        description: The shares to be deducted from the balance of token pool as withdrawal amount.
+  - name: addavs
+    summary: Add Authorized Validator Stake. Add stake from an authorized validator to the token pool.
+    inputs:
+      - name: token_pool
+        type: PoolInfo
+        solana:
+          attributes: [mut]
+      - name: validator_account
+        type: sol:pubkey
+        description: The address of the Authorized Validator Stake.
+      - name: authority
+        type: sol:account_info
+        description: The permission checking of contract, can only be called by program owner.
+  - name: removeavs
+    summary: Remove Authorized Validator Stake. Remove stake from an authorized validator in the token pool.
+    inputs:
+      - name: token_pool
+        type: PoolInfo
+        solana:
+          attributes: [mut]
+      - name: validator_account
+        type: sol:pubkey
+        description: The address of the Authorized Validator Stake.
+      - name: authority
+        type: sol:account_info
+        description: The permission checking of contract, can only be called by program owner.
