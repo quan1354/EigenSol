@@ -32,6 +32,7 @@ import { FAQItem, getFaqList } from 'utils/faqList';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import idl from './idl.json';
+import { SolanaWallet } from './SolanaWallet';
 
 // import {
 //   AnchorProvider,
@@ -43,9 +44,15 @@ import idl from './idl.json';
 interface HomeProps {
   faqList: FAQItem[];
 }
+
+// add on css styling
 const InputWrapper = styled.div`
   margin-bottom: ${({ theme }) => theme.spaceMap.md}px;
 `;
+const ButtonWrapper = styled.div`
+  border-bottom: 0.5px solid;
+`;
+
 const Home: FC<HomeProps> = ({ faqList }) => {
   useEffect(() => {
     const matomoSomeEvent: MatomoEventType = [
@@ -62,6 +69,10 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     contract: contractRpc,
     method: 'name',
   });
+
+  const withdrawToken = async () => {
+    console.log('');
+  };
 
   // UI -> migrate to new file -> Navigation
   const { data } = useLidoSWR<number>('/api/oneinch-rate', standardFetcher);
@@ -82,26 +93,57 @@ const Home: FC<HomeProps> = ({ faqList }) => {
           spacing="sm"
           wrap="wrap"
         >
-          <StackItem>
-            <Button
-              color="secondary"
-              size="sm"
-              variant="ghost"
-              onClick={() => setActiveComponent('Stake')}
-            >
-              Stake
-            </Button>
-          </StackItem>
-          <StackItem>
-            <Button
-              color="secondary"
-              size="sm"
-              variant="ghost"
-              onClick={() => setActiveComponent('Withdraw')}
-            >
-              Withdraw
-            </Button>
-          </StackItem>
+          {activeComponent === 'Stake' ? (
+            <ButtonWrapper>
+              <StackItem>
+                <Button
+                  color="secondary"
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => setActiveComponent('Stake')}
+                >
+                  Stake
+                </Button>
+              </StackItem>
+            </ButtonWrapper>
+          ) : (
+            <StackItem>
+              <Button
+                color="secondary"
+                size="sm"
+                variant="ghost"
+                onClick={() => setActiveComponent('Stake')}
+              >
+                Stake
+              </Button>
+            </StackItem>
+          )}
+
+          {activeComponent === 'Withdraw' ? (
+            <ButtonWrapper>
+              <StackItem>
+                <Button
+                  color="secondary"
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => setActiveComponent('Withdraw')}
+                >
+                  Withdraw
+                </Button>
+              </StackItem>
+            </ButtonWrapper>
+          ) : (
+            <StackItem>
+              <Button
+                color="secondary"
+                size="sm"
+                variant="ghost"
+                onClick={() => setActiveComponent('Withdraw')}
+              >
+                Withdraw
+              </Button>
+            </StackItem>
+          )}
         </Stack>
 
         {activeComponent === 'Stake' ? (
@@ -134,14 +176,14 @@ const Home: FC<HomeProps> = ({ faqList }) => {
           // Withdraw component
           <Block>
             <form action="" method="post">
-              {/*  <InputWrapper>
-         <Input
-           fullwidth
-           placeholder="0"
-           leftDecorator={<Steth />}
-           label="Token amount"
-         />
-       </InputWrapper> */}
+              {/* <InputWrapper>
+              <Input
+                fullwidth
+                placeholder="0"
+                leftDecorator={<Steth />}
+                label="Token amount"
+              />
+            </InputWrapper> */}
 
               <p
                 style={{
@@ -151,10 +193,17 @@ const Home: FC<HomeProps> = ({ faqList }) => {
                   marginBottom: '96px',
                 }}
               >
-                Please navigate to other page
+                Connect wallet to see your stake accounts
               </p>
 
-              <Button style={{ marginTop: '8px' }} fullwidth type="submit">
+              <SolanaWallet></SolanaWallet>
+
+              <Button
+                style={{ marginTop: '8px' }}
+                onClick={withdrawToken}
+                fullwidth
+                type="submit"
+              >
                 Withdraw
               </Button>
 
