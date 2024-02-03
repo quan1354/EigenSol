@@ -26,7 +26,7 @@ types:
       - name: total_balance
         type: u32
         description: The total balance in token pool.
-      - name: token_type
+      - name: token
         type: rs:vec<sol:pubkey>
         description: Types of token accepted to token pool.
         solana:
@@ -60,21 +60,21 @@ types:
           type: sol:pubkey
     fields:
       - name: stake_amount
-        type: u32
+        type: u64
         description: The total stake amount in token pool.
       - name: deposit_slot
         type: u64
         description: The depost time of stakers stake.
 methods:
-  - name: initialize
+  - name: createtokenpool
     summary: To call once per account. Initialize a PoolInfo account. The balance of the token pool will be set to 0 initially.
     inputs:
       - name: token_pool
         type: PoolInfo
         solana:
           attributes: [ init_if_needed ]
-      - name: token_type
-        type: rs:vec<sol:pubkey>
+      - name: token
+        type: sol:pubkey
         description: The accepted token types to be assigned to the PoolInfo.token_type property
       - name: start_slot
         type: u64
@@ -89,7 +89,7 @@ methods:
         type: PoolInfo
         solana:
             attributes: [ mut ]
-      - name: amount
+      - name: stakeamount
         type: u32
         description: The amount to be added to the balance of token pool as staking amount.
   - name: withdraw
