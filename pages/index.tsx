@@ -44,9 +44,15 @@ import { SolanaWallet } from './SolanaWallet';
 interface HomeProps {
   faqList: FAQItem[];
 }
+
+// add on css styling
 const InputWrapper = styled.div`
   margin-bottom: ${({ theme }) => theme.spaceMap.md}px;
 `;
+const ButtonWrapper = styled.div`
+  border-bottom: 0.5px solid;
+`;
+
 const Home: FC<HomeProps> = ({ faqList }) => {
   useEffect(() => {
     const matomoSomeEvent: MatomoEventType = [
@@ -87,26 +93,57 @@ const Home: FC<HomeProps> = ({ faqList }) => {
           spacing="sm"
           wrap="wrap"
         >
-          <StackItem>
-            <Button
-              color="secondary"
-              size="sm"
-              variant="ghost"
-              onClick={() => setActiveComponent('Stake')}
-            >
-              Stake
-            </Button>
-          </StackItem>
-          <StackItem>
-            <Button
-              color="secondary"
-              size="sm"
-              variant="ghost"
-              onClick={() => setActiveComponent('Withdraw')}
-            >
-              Withdraw
-            </Button>
-          </StackItem>
+          {activeComponent === 'Stake' ? (
+            <ButtonWrapper>
+              <StackItem>
+                <Button
+                  color="secondary"
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => setActiveComponent('Stake')}
+                >
+                  Stake
+                </Button>
+              </StackItem>
+            </ButtonWrapper>
+          ) : (
+            <StackItem>
+              <Button
+                color="secondary"
+                size="sm"
+                variant="ghost"
+                onClick={() => setActiveComponent('Stake')}
+              >
+                Stake
+              </Button>
+            </StackItem>
+          )}
+
+          {activeComponent === 'Withdraw' ? (
+            <ButtonWrapper>
+              <StackItem>
+                <Button
+                  color="secondary"
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => setActiveComponent('Withdraw')}
+                >
+                  Withdraw
+                </Button>
+              </StackItem>
+            </ButtonWrapper>
+          ) : (
+            <StackItem>
+              <Button
+                color="secondary"
+                size="sm"
+                variant="ghost"
+                onClick={() => setActiveComponent('Withdraw')}
+              >
+                Withdraw
+              </Button>
+            </StackItem>
+          )}
         </Stack>
 
         {activeComponent === 'Stake' ? (

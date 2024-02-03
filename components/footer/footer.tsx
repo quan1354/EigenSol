@@ -27,14 +27,11 @@ const Footer: FC = () => (
       <FooterTitleStyle>
         Built to participate in Encode x Solana Hackathon 2024
       </FooterTitleStyle>
+      <FooterItemStyle>Frontend - lido-frontend-template</FooterItemStyle>
       <FooterItemStyle>
-        Frontend - lido-frontend-template
-        {/* <Link href="https://github.com/lidofinance/lido-frontend-template">lido-frontend-template</Link> */}
+        Wallet adapter - anza-xyz/wallet-adapter
       </FooterItemStyle>
-      <FooterItemStyle>
-        Smart Contract - Codigo
-        {/*<Link href="https://docs.codigo.ai/">codigo</Link> */}
-      </FooterItemStyle>
+      <FooterItemStyle>Smart Contract - Codigo</FooterItemStyle>
     </FooterGroupStyle>
 
     {/* <FooterGroupStyle>
