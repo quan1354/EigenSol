@@ -1,0 +1,19 @@
+{
+  "rustc": 9304630794944934427,
+  "features": "[]",
+  "target": 1889015552750439958,
+  "profile": 17266519548570942948,
+  "path": 9496853515498470218,
+  "deps": [],
+  "local": [
+    {
+      "CheckDepInfo": {
+        "dep_info": "release/.fingerprint/unicode-segmentation-3526c551bfd6f790/dep-lib-unicode-segmentation"
+      }
+    }
+  ],
+  "rustflags": [],
+  "metadata": 11806978865797999234,
+  "config": 2202906307356721367,
+  "compile_kind": 0
+}

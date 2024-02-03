@@ -1,0 +1,23 @@
+{
+  "rustc": 9304630794944934427,
+  "features": "[\"init-if-needed\"]",
+  "target": 4917806625482026021,
+  "profile": 17266519548570942948,
+  "path": 102654042025784888,
+  "deps": [
+    [9618700007800273094, "quote", false, 10421694300477118480],
+    [11455168883382479139, "anchor_syn", false, 15743735688659167319],
+    [17143850428905299221, "syn", false, 8021695849453468192]
+  ],
+  "local": [
+    {
+      "CheckDepInfo": {
+        "dep_info": "release/.fingerprint/anchor-derive-accounts-299b019bc73b17e6/dep-lib-anchor-derive-accounts"
+      }
+    }
+  ],
+  "rustflags": [],
+  "metadata": 3978454898349386712,
+  "config": 2202906307356721367,
+  "compile_kind": 0
+}

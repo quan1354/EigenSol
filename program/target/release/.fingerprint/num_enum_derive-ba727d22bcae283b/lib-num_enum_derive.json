@@ -1,0 +1,24 @@
+{
+  "rustc": 9304630794944934427,
+  "features": "[\"proc-macro-crate\", \"std\"]",
+  "target": 7630799055155974718,
+  "profile": 17266519548570942948,
+  "path": 15096823575757046261,
+  "deps": [
+    [1933759491588147092, "syn", false, 47483016894018808],
+    [9618700007800273094, "quote", false, 10421694300477118480],
+    [16285336375947054926, "proc_macro2", false, 9138480207243645352],
+    [18320034951567185589, "proc_macro_crate", false, 12263187442145271265]
+  ],
+  "local": [
+    {
+      "CheckDepInfo": {
+        "dep_info": "release/.fingerprint/num_enum_derive-ba727d22bcae283b/dep-lib-num_enum_derive"
+      }
+    }
+  ],
+  "rustflags": [],
+  "metadata": 18091788674843497664,
+  "config": 2202906307356721367,
+  "compile_kind": 0
+}

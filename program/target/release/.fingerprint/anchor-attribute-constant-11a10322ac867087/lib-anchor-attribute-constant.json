@@ -1,0 +1,23 @@
+{
+  "rustc": 9304630794944934427,
+  "features": "[]",
+  "target": 3825936089855314765,
+  "profile": 17266519548570942948,
+  "path": 15793643213170527459,
+  "deps": [
+    [9618700007800273094, "quote", false, 10421694300477118480],
+    [11455168883382479139, "anchor_syn", false, 15743735688659167319],
+    [17143850428905299221, "syn", false, 8021695849453468192]
+  ],
+  "local": [
+    {
+      "CheckDepInfo": {
+        "dep_info": "release/.fingerprint/anchor-attribute-constant-11a10322ac867087/dep-lib-anchor-attribute-constant"
+      }
+    }
+  ],
+  "rustflags": [],
+  "metadata": 13120961055165416495,
+  "config": 2202906307356721367,
+  "compile_kind": 0
+}

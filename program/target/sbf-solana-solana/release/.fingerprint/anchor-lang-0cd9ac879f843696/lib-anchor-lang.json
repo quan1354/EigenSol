@@ -1,0 +1,72 @@
+{
+  "rustc": 9304630794944934427,
+  "features": "[\"derive\", \"init-if-needed\"]",
+  "target": 2711443150433578712,
+  "profile": 15711599927629155059,
+  "path": 9905991988546601630,
+  "deps": [
+    [1263156195840179208, "solana_program", false, 94734658728431332],
+    [
+      1658759658318661119,
+      "anchor_attribute_constant",
+      false,
+      6186407240732627360
+    ],
+    [3068739482349947447, "getrandom", false, 11792541515853503162],
+    [
+      3075441122728359113,
+      "anchor_derive_accounts",
+      false,
+      15517535759284211829
+    ],
+    [4748012609204464776, "arrayref", false, 10310549302054102039],
+    [4790332501662844689, "base64", false, 6305588678620229181],
+    [
+      5393551795602478524,
+      "anchor_attribute_account",
+      false,
+      8308157135647399993
+    ],
+    [6644485573429891122, "thiserror", false, 9165875009096976658],
+    [8612759544182637449, "borsh", false, 15450180130996400545],
+    [
+      10133515453419392106,
+      "anchor_attribute_program",
+      false,
+      13798228683425692551
+    ],
+    [10290136930134422824, "bytemuck", false, 10677596201084713392],
+    [
+      11170119568398293030,
+      "anchor_attribute_event",
+      false,
+      10630967598699792477
+    ],
+    [
+      11550433528139364110,
+      "anchor_attribute_access_control",
+      false,
+      358588634565296301
+    ],
+    [12088280702837278959, "anchor_derive_serde", false, 3086536902184604095],
+    [12639858850933718058, "bincode", false, 7900510762644748891],
+    [
+      14789944396528076442,
+      "anchor_attribute_error",
+      false,
+      1735599998081754756
+    ],
+    [15956619405605670111, "anchor_derive_space", false, 10876564830465955641]
+  ],
+  "local": [
+    {
+      "CheckDepInfo": {
+        "dep_info": "sbf-solana-solana/release/.fingerprint/anchor-lang-0cd9ac879f843696/dep-lib-anchor-lang"
+      }
+    }
+  ],
+  "rustflags": ["-Zremap-cwd-prefix="],
+  "metadata": 8904873174815195710,
+  "config": 2202906307356721367,
+  "compile_kind": 11910797420234664848
+}

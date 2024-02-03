@@ -37,3 +37,5 @@ yarn-error.log*
 .idea
 
 /public/runtime/
+.env
+program/solana/
