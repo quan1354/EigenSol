@@ -32,6 +32,7 @@ import { FAQItem, getFaqList } from 'utils/faqList';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import idl from './idl.json';
+import { SolanaWallet } from './SolanaWallet';
 
 // import {
 //   AnchorProvider,
@@ -62,6 +63,10 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     contract: contractRpc,
     method: 'name',
   });
+
+  const withdrawToken = async () => {
+    console.log('');
+  };
 
   // UI -> migrate to new file -> Navigation
   const { data } = useLidoSWR<number>('/api/oneinch-rate', standardFetcher);
@@ -134,14 +139,14 @@ const Home: FC<HomeProps> = ({ faqList }) => {
           // Withdraw component
           <Block>
             <form action="" method="post">
-              {/*  <InputWrapper>
-         <Input
-           fullwidth
-           placeholder="0"
-           leftDecorator={<Steth />}
-           label="Token amount"
-         />
-       </InputWrapper> */}
+              {/* <InputWrapper>
+              <Input
+                fullwidth
+                placeholder="0"
+                leftDecorator={<Steth />}
+                label="Token amount"
+              />
+            </InputWrapper> */}
 
               <p
                 style={{
@@ -151,10 +156,17 @@ const Home: FC<HomeProps> = ({ faqList }) => {
                   marginBottom: '96px',
                 }}
               >
-                Please navigate to other page
+                Connect wallet to see your stake accounts
               </p>
 
-              <Button style={{ marginTop: '8px' }} fullwidth type="submit">
+              <SolanaWallet></SolanaWallet>
+
+              <Button
+                style={{ marginTop: '8px' }}
+                onClick={withdrawToken}
+                fullwidth
+                type="submit"
+              >
                 Withdraw
               </Button>
 
