@@ -73,6 +73,7 @@ pub mod eigensol {
 	pub fee_payer : AccountInfo<'info>,
         #[account(mut, seeds = [b"poolinfo"], bump)]
 	pub token_pool: Account<'info,PoolInfo>,
+    /// CHECK:
     #[account(mut)]
     pub user: AccountInfo<'info>,
     /// CHECK:
