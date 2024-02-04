@@ -26,7 +26,7 @@ import { trackEvent, MatomoEventType } from '@lidofinance/analytics-matomo';
 // import Wallet from 'components/wallet';
 import Section from 'components/section';
 import Layout from 'components/layout';
-import Faq from 'components/faq';
+// import Faq from 'components/faq';
 import { standardFetcher } from 'utils';
 import { FAQItem, getFaqList } from 'utils/faqList';
 
@@ -80,7 +80,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
 
   const [activeComponent, setActiveComponent] = useState('Stake');
   return (
-    <Layout title="This is Index Page" subtitle="Withdraw unstaked SOL">
+    <Layout title="This is Index Page" subtitle="Withdraw staked SOL">
       <Head>
         {/* <title>Lido | Frontend Template</title> */}
         <title>EigenSol</title>
@@ -156,18 +156,18 @@ const Home: FC<HomeProps> = ({ faqList }) => {
               <InputWrapper>
                 <Input fullwidth label="Amount" leftDecorator={<Stsol />} />
               </InputWrapper>
-              <InputWrapper>
+              {/* <InputWrapper>
                 <Input fullwidth disabled label="Your token address" />
-              </InputWrapper>
+              </InputWrapper> */}
               <InputWrapper>
                 <Button fullwidth type="submit">
                   Start staking
                 </Button>
               </InputWrapper>
               <DataTable>
-                <DataTableRow title="You will receive">0 Stsol</DataTableRow>
-                <DataTableRow title="Exchange rate">
-                  0.012312 stSol
+                {/* <DataTableRow title="You will receive">0 stsol</DataTableRow> */}
+                <DataTableRow title="Token accepted">
+                  stSOL, JitoSOL
                 </DataTableRow>
               </DataTable>
             </form>
@@ -185,27 +185,39 @@ const Home: FC<HomeProps> = ({ faqList }) => {
               />
             </InputWrapper> */}
 
-              <p
-                style={{
-                  fontSize: '16px',
-                  textAlign: 'center',
-                  marginTop: '96px',
-                  marginBottom: '96px',
-                }}
-              >
-                Connect wallet to see your stake accounts
-              </p>
+              <InputWrapper>
+               <Text size="xs">Enter amount</Text>
+             </InputWrapper>
+             <form action="" method="post">
+               <InputWrapper>
+                 <Input fullwidth label="Amount" leftDecorator={<Stsol />} />
+               </InputWrapper>
+               {/* <InputWrapper>
+                 <Input fullwidth disabled label="Your token address" />
+               </InputWrapper> */}
+               <InputWrapper>
+                 <Button fullwidth type="submit">
+                   Withdraw & Claim All Your Rewards
+                 </Button>
+               </InputWrapper>
+               <DataTable>
+                 <DataTableRow title="Your rewards">20 EigenSOL</DataTableRow>
+                 <DataTableRow title="Your current stacked amount">
+                   1,000 stSOL
+                 </DataTableRow>
+               </DataTable>
+             </form>
 
-              <SolanaWallet></SolanaWallet>
+              {/* <SolanaWallet></SolanaWallet> */}
 
-              <Button
+              {/* <Button
                 style={{ marginTop: '8px' }}
                 onClick={withdrawToken}
                 fullwidth
                 type="submit"
               >
                 Withdraw
-              </Button>
+              </Button> */}
 
               <div
                 style={{
@@ -214,26 +226,51 @@ const Home: FC<HomeProps> = ({ faqList }) => {
                   marginTop: '24px',
                 }}
               >
-                <div>Transaction cost</div>
-                <div>~ 0.000005 SOL ($0.00048)</div>
               </div>
             </form>
           </Block>
+          // <Block>
+          //   <InputWrapper>
+          //     <Text size="xs">Enter amount</Text>
+          //   </InputWrapper>
+          //   <form action="" method="post">
+          //     <InputWrapper>
+          //       <Input fullwidth label="Amount" leftDecorator={<Stsol />} />
+          //     </InputWrapper>
+          //     <InputWrapper>
+          //       <Input fullwidth disabled label="Your token address" />
+          //     </InputWrapper>
+          //     <InputWrapper>
+          //       <Button fullwidth type="submit">
+          //         Start withdraw
+          //       </Button>
+          //     </InputWrapper>
+          //     <DataTable>
+          //       <DataTableRow title="You will receive">0 stsol</DataTableRow>
+          //       <DataTableRow title="Exchange rate">
+          //         0.012312 stSol
+          //       </DataTableRow>
+          //     </DataTable>
+          //   </form>
+          // </Block>
         )}
       </Block>
-      <Section title="Data table" headerDecorator={<Link href="#">Link</Link>}>
+      <Section title="Eigensol Statistics">
         <Block>
           <DataTable>
-            <DataTableRow title="Token name" loading={tokenName.initialLoading}>
-              {tokenName.data}
+            <DataTableRow title="Annual percentage rate" loading={tokenName.initialLoading}>
+              2.9%
             </DataTableRow>
-            <DataTableRow title="1inch rate" loading={tokenName.initialLoading}>
-              {oneInchRate}
+            <DataTableRow title="Total staked with Eigensol" loading={tokenName.initialLoading}>
+              611,381 worth of SOL
+            </DataTableRow>
+            <DataTableRow title="Stakers" loading={tokenName.initialLoading}>
+              3,115
             </DataTableRow>
           </DataTable>
         </Block>
       </Section>
-      <Faq faqList={faqList} />
+      {/* <Faq faqList={faqList} /> */}
     </Layout>
   );
 };
