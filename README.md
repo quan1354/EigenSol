@@ -106,7 +106,7 @@ Below are the stack included in the frontend template:
 - Node.js v12+
 - Yarn package manager
 
-## Steps to do when clone this repo
+## Steps to do after clone this repo
 
 Step 0. Read `DOCS.md` in the root of the project
 
@@ -131,10 +131,3 @@ yarn dev
 ```
 
 Step 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Navigate the component by clicking on the two buttons available
-### Stake page
-![alt text](image.png)
-
-### Withdraw page
-![alt text](image-1.png)
